@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Genetic TSP</title>
+  <style>
+  body{background-color: powderwhite; font-size: 25px}
+  button{font-size:25px}
+  header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+  }
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */
+.button4 {background-color: #555555;} /* Black */
+</style>
+
+  <script src="../p5.min.js"></script>
+  <script src="../p5.dom.js"></script>
+    <script src="sketch.js"></script>
+    <script src="gs.js"></script>
+</head>
+<body>
+  <header>
+   <h1>Comp6776 - Assignment 2 - Travelling Saleman Problem</h1>
+  </header>
+    <div>
+        <br/>
+        <center><span>Upload File</span>
+        <button type="button" id="standard" value = "A2_TSP_Standard.txt" onclick="loadStandard()">A2_TSP_Standard.txt</button>
+        <button type="button" id="western" value = "A2_TSP_WesternSahara_29.txt" onclick="loadWestern()">A2_TSP_WesternSahara_29.txt</button>
+        <button type="button" id="uruguay" value = "A2_TSP_Uruguay_734.txt" onclick="loadUruguay()">A2_TSP_Uruguay_734.txt</button><center>
+
+        <output id="fileUploaded">File is yet to be uploaded....</output>
+        <br/><br/>
+        <span>Population Size</span>
+        <input type="number" id="popSizeIn" value="100" step="50" min = "50" max="1000">
+        <output id="popSizeOut"></output>
+
+        <span>Crossover Chance</span>
+        <input type="number" id="pCrossOverIn" value="0.3" step = "0.1" min = "0" max ="1">
+        <output id="pCrossOverOut"></output>
+
+        <span>Mutation Chance</span>
+        <input type="number" id="pMutateIn" value = "0.01" min = "0" max="1" step= "0.01">
+        <output id="pMutateOut"></output>
+
+        <br><br>
+        <span>Click this button to Start Processing</span>
+        <input type="submit" id="pStartbutton" value = "Start" onclick="start()">
+
+        <br><br>
+        <span>Click this button to Stop Processing</span>
+        <input type="submit" id="pStopbutton" value = "Stop" onclick="stop()">
+
+      </div>
+    <br>
+    <div style="display: inline-block; overflow: scroll">
+      <div id="canvascontainer" width="1000" height="600" style="border:1px solid #d3d3d3; ">
+
+      </div>
+    </div>
+
+  <div style="display: inline-block">
+        <div>
+          <span>Total # Citys: </span>
+          <output id="totalCitys">0</output>
+        </div>
+        <div>
+          <span>Current # generations: </span>
+          <output id="genNumber">0</output>
+        </div>
+        <div>
+          <span>Current generation's worst longest distance: </span>
+          <output id="longestNow">0</output>
+        </div>
+        <div>
+          <span>Current generation's best shortest distance: </span>
+          <output id="shortestNow">0</output>
+        </div>
+        <div>
+          <span>Generations to achieve best shortest-ever: </span>
+          <output id="fittestGens">0</output>
+        </div>
+        <div>
+          <span>Best shortest distance ever: </span>
+          <output id="shortestEver">0</output>
+        </div>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </div>
+<footer>Copyright &copy;Aswini Naveen||mun.ca</footer>
+</body>
+</html>
+

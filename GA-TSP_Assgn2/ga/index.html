@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Genetic TSP</title>
+    <style>
+  body{background-color: powderwhite; font-size: 18px}
+  button{font-size:25px}
+  header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+  }
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px 1.5px;
+    cursor: pointer;
+}
+.button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */
+.button4 {background-color: #555555;} /* Black */
+</style>
+  <script src="../p5.min.js"></script>
+    <script src="sketch.js"></script>
+    <script src="gs.js"></script>
+</head>
+<body>
+  <header>
+   <h1>Comp6776 - Assignment 2 - Travelling Salesman Problem</h1>
+  </header>
+  <center>
+    <div>
+        <b><output id="fileUpload">Choose the File to Upload:</output></b>
+        <button class="button button4" type="button" id="standard" value = "A2_TSP_Standard.txt" onclick="loadStandard()">A2_TSP_Standard.txt</button>
+        <button class="button button4" type="button" id="western" value = "A2_TSP_WesternSahara_29.txt" onclick="loadWestern()">A2_TSP_WesternSahara_29.txt</button>
+        <button class="button button4" type="button" id="uruguay" value = "A2_TSP_Uruguay_734.txt" onclick="loadUruguay()">A2_TSP_Uruguay_734.txt</button>
+
+        <output style = "color:red" id="fileUploaded">File is yet to be uploaded....</output>
+        <br/><br/>
+        <span>Population Size</span>
+        <input type="number" id="popSizeIn" value="100" step="50" min = "50" max="1000">
+        <output id="popSizeOut"></output>
+
+        <span>Crossover Rate</span>
+        <input type="number" id="pCrossOverIn" value="0.3" step = "0.1" min = "0" max ="1">
+        <output id="pCrossOverOut"></output>
+
+        <span>Mutation Rate</span>
+        <input type="number" id="pMutateIn" value = "0.01" min = "0" max="1" step= "0.1">
+        <output id="pMutateOut"></output>
+
+        <br><br>
+        <span>Start Processing</span>
+        <input class="button" type="submit" id="pStartbutton" value="Start" onclick="start()">
+
+        <span>Stop Processing</span>
+        <input class="button button3" type="submit" id="pStopbutton" value="Stop" onclick="stop()">
+
+        <span>Clear Black Board</span>
+        <input class="button button2" type="submit" id="pClearbutton" value="Clear" onclick="Pclear()">
+      </div>
+
+
+     <div>
+          <br>
+          <span><b>Total # Citys: </b></span>
+          <output id="totalCitys">0</output>
+          <br>
+
+          <span><b>Generations to Achieve Shortest-Ever: </b></span>
+          <output id="fittestGens">0</output>
+
+          <span><b> || Best Shortest Distance Ever: </b></span>
+          <output id="shortestEver">0</output>
+          <br>
+
+          <span><b>Shortest Route of Citys in Order So Far: </b></span>
+          <output id="bestOrder">0</output>
+
+          <br>
+          <span><b>Current # Generation: </b></span>
+          <output id="genNumber">0</output>
+
+          <br>
+          <span><b>Current Gen Longest Distance: </b></span>
+          <output id="longestNow">0</output>
+
+
+          <span><b>|| Current Gen Average Distance: </b></span>
+          <output id="averageNow">0</output>
+
+
+          <span><b>|| Current Gen Shortest Distance: </b></span>
+          <output id="shortestNow">0</output>
+          <br><br>
+          <output style = "color:blue" id = "note"><b>PS</b>: What is displayed here? Fittest individual (route) in our current generation, Fittest individual ever produced by this run of the algorithm in this TSP instance, Plot current generations best, worst and average along with the best one ever produced by this run of the algorithm in this TSP Instance. </output>
+          <br>
+        </div>
+
+      </center></br>
+    <div style="overflow: scroll">
+      <div id="canvascontainer" width="1000" height="600" style="border:1px solid #d3d3d3; ">
+
+      </div>
+    </div>
+
+
+<footer>Copyright &copy;anaveen@mun.ca</footer>
+</b></body>
+</html>
+
